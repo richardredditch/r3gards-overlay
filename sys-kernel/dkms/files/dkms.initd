@@ -1,0 +1,22 @@
+#!/sbin/openrc-run
+# Copyright 2017 Redcore Linux Project
+# Distributed under the terms of the GNU General Public License v2
+
+depend() {
+	after localmount
+}
+
+start() {
+	ebegin "Starting DKMS (dynamic kernel module support) "
+		/usr/lib/dkms/dkms_autoinstaller start
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping DKMS (dynamic kernel module support)"
+	eend $?
+}
+
+status() {
+	/usr/lib/dkms/dkms_autoinstaller status
+}
